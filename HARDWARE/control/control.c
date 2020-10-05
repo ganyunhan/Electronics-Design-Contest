@@ -25,7 +25,7 @@ void Track(void)		//Ñ­¼£
 	extern uint16_t scanresult;
 	extern int  speed_set;
 	scanresult = ScanLine();
-	printf("%d",scanresult);
+//	printf("%d",scanresult);
 	switch (scanresult)
 	{
 		case 1:Motor_set(speed_set , 0 , 0);break;

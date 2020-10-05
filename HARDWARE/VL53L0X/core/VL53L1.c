@@ -18,7 +18,7 @@ void vl53l1_init(void)
 {
 	
 	XNUCLEO53L1A1_Init();
-  dev.I2cHandle = &hi2c2;
+  dev.I2cHandle = &hi2c1;
   dev.I2cDevAddr = 0x52;
 
   ToFSensor = 1; // Select ToFSensor: 0=Left, 1=Center, 2=Right

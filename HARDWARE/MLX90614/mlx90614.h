@@ -16,7 +16,7 @@
 
 
 /* Private defines -----------------------------------------------------------*/
-#define I2C_Channel hi2c1
+#define I2C_Channel hi2c2
 
 /* DEFAULT SLAVE ADDRESS */
 #define MLX90614_DEFAULT_SA 0x5A

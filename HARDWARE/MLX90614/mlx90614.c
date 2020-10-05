@@ -63,7 +63,7 @@ void MLX90614init(void)
 	__HAL_RCC_GPIOC_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
-	I2C_Channel.Instance = I2C1;
+	I2C_Channel.Instance = I2C2;
   I2C_Channel.Init.ClockSpeed = 100000;
   I2C_Channel.Init.DutyCycle = I2C_DUTYCYCLE_2;
   I2C_Channel.Init.OwnAddress1 = 0;

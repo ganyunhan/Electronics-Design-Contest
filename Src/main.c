@@ -44,13 +44,15 @@
 /* USER CODE BEGIN PD */
 uint8_t len;	
 uint16_t times=0; 
-float temp =0;
+float ObjectTemperature;
+float AmbientTemperature;
 int speed_set = 20, recive_flag = 0;
 char deviationx_rec[5],deviationy_rec[5];
 uint8_t	UART1RxBuffer[1];
 char Uart_get[20];
 float deviationx,deviationy;
 uint16_t scanresult;
+extern uint16_t Distance;
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -126,7 +128,7 @@ int main(void)
 	Motor_init();
 	MLX90614init();
 	HAL_UART_Receive_IT(&huart1,UART1RxBuffer,1);
-//	vl53l1_init();
+	vl53l1_init();
 	servo_init();
   /* USER CODE END 2 */
 
@@ -135,14 +137,16 @@ int main(void)
   while (1)
   {
 //		Motor_set(20,0,0);
-//		vl53_readis();
+		vl53_readis();
+		ObjectTemperature= MLX90614_ReadTemp(0x00,0x07);
+		printf("ŒÔÃÂŒ¬∂» %.2f	æ‡¿Î %.dmm",ObjectTemperature,Distance);
 //		servo_scan();
 //		ScanLine_ReadPins();
 //		Motor_Left_speed(20);
 //		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1,200); 
 //		debug_log("Now mode is %d",scanresult);
-		Control_Loop();
-//		HAL_Delay(500);
+//		Control_Loop();
+		HAL_Delay(500);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

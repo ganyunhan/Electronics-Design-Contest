@@ -8,7 +8,7 @@ void ScanLine_ReadPins(void)
 	if(HAL_GPIO_ReadPin(K2_GPIO_Port, K2_Pin) == GPIO_PIN_RESET)	K2 = 1; else K2 = 0;
 	if(HAL_GPIO_ReadPin(K3_GPIO_Port, K3_Pin) == GPIO_PIN_RESET)	K3 = 1; else K3 = 0;
 	if(HAL_GPIO_ReadPin(K4_GPIO_Port, K4_Pin) == GPIO_PIN_RESET)	K4 = 1; else K4 = 0;
-	printf("K1 = %d	K2 = %d	K3 = %d	K4 = %d",K1,K2,K3,K4);
+//	printf("K1 = %d	K2 = %d	K3 = %d	K4 = %d",K1,K2,K3,K4);
 }
 
 uint16_t ScanLine(void)
