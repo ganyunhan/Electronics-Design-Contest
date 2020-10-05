@@ -1,8 +1,5 @@
 servo-f407\mlx90614.o: ..\HARDWARE\MLX90614\mlx90614.c
-servo-f407\mlx90614.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\assert.h
-servo-f407\mlx90614.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-servo-f407\mlx90614.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-servo-f407\mlx90614.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+servo-f407\mlx90614.o: ../Inc/main.h
 servo-f407\mlx90614.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 servo-f407\mlx90614.o: ../Inc/stm32f4xx_hal_conf.h
 servo-f407\mlx90614.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h
@@ -10,6 +7,7 @@ servo-f407\mlx90614.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h
 servo-f407\mlx90614.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
 servo-f407\mlx90614.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h
 servo-f407\mlx90614.o: ../Drivers/CMSIS/Include/core_cm4.h
+servo-f407\mlx90614.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 servo-f407\mlx90614.o: ../Drivers/CMSIS/Include/cmsis_version.h
 servo-f407\mlx90614.o: ../Drivers/CMSIS/Include/cmsis_compiler.h
 servo-f407\mlx90614.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
@@ -35,9 +33,9 @@ servo-f407\mlx90614.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.
 servo-f407\mlx90614.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 servo-f407\mlx90614.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 servo-f407\mlx90614.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
-servo-f407\mlx90614.o: ..\HARDWARE\MLX90614\mlx90614.h
-servo-f407\mlx90614.o: ../Inc/main.h
 servo-f407\mlx90614.o: ../Inc/servo.h
 servo-f407\mlx90614.o: ../Inc/main.h
 servo-f407\mlx90614.o: ../Inc/tim.h
 servo-f407\mlx90614.o: ../Inc/i2c.h
+servo-f407\mlx90614.o: ..\HARDWARE\MLX90614\mlx90614.h
+servo-f407\mlx90614.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h

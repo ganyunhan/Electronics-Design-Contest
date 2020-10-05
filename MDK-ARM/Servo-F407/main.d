@@ -45,7 +45,6 @@ servo-f407\main.o: ..\HARDWARE\motor\motor.h
 servo-f407\main.o: ..\HARDWARE\uart\uart_handler.h
 servo-f407\main.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 servo-f407\main.o: ..\HARDWARE\control\control.h
-servo-f407\main.o: ..\HARDWARE\MLX90614\mlx90614.h
 servo-f407\main.o: ..\HARDWARE\Linefinder\linefinder.h
 servo-f407\main.o: ..\HARDWARE\VL53L0X\core\VL53L1.h
 servo-f407\main.o: ..\HARDWARE\VL53L0X\core\VL53L1X_API.h

@@ -126,7 +126,8 @@ int main(void)
   MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
 	Motor_init();
-	MLX90614init();
+	MLX90614_Init(&hi2c2);
+  MLX90614_SetEmissivity(0.985); // Human skin
 	HAL_UART_Receive_IT(&huart1,UART1RxBuffer,1);
 	vl53l1_init();
 	servo_init();
@@ -138,8 +139,9 @@ int main(void)
   {
 //		Motor_set(20,0,0);
 		vl53_readis();
-		ObjectTemperature= MLX90614_ReadTemp(0x00,0x07);
-		printf("物体温度 %.2f	距离 %.dmm",ObjectTemperature,Distance);
+		MLX90614_ReadAmbientTemperature(&AmbientTemperature);
+		MLX90614_ReadObjectTemperature(&ObjectTemperature);
+		printf("物体温度 %.2f	环境温度 %.2f 距离 %.dmm",ObjectTemperature,ObjectTemperature,Distance);
 //		servo_scan();
 //		ScanLine_ReadPins();
 //		Motor_Left_speed(20);

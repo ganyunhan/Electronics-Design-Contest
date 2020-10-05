@@ -1,59 +1,62 @@
 /*
  * mlx90614.h
  *
- *  Created on: 29 mag 2019
- *      Author: Michele Gazzarri
+ *  The MIT License.
+ *  Created on: 25.01.2019
+ *      Author: Mateusz Salamon
+ *      www.msalamon.pl
+ *      mateusz@msalamon.pl
+ *
+ *	https://github.com/lamik/MLX90614_STM32_HAL
+ *  https://msalamon.pl/jak-chuck-norris-mierzy-temperature-patrzy-na-nia-mlx90614-na-stm32/
  */
-#include "main.h"
+
 #ifndef MLX90614_H_
 #define MLX90614_H_
 
 
+#define MLX90614_DEFAULT_ADDRESS ((0x5A)<<1)
+
+// RAM
+#define MLX90614_RAWIR1 0x04
+#define MLX90614_RAWIR2 0x05
+#define MLX90614_TA 0x06
+#define MLX90614_TOBJ1 0x07
+#define MLX90614_TOBJ2 0x08
+// EEPROM
+#define MLX90614_TOMAX 0x00
+#define MLX90614_TOMIN 0x01
+#define MLX90614_PWMCTRL 0x02
+#define MLX90614_TARANGE 0x03
+#define MLX90614_EMISS 0x04
+#define MLX90614_CONFIG 0x05
+#define MLX90614_ADDR 0x0E
+#define MLX90614_EMISS_CALIBRATION 0x0F
+#define MLX90614_ID1 0x1C
+#define MLX90614_ID2 0x1D
+#define MLX90614_ID3 0x1E
+#define MLX90614_ID4 0x1F
+
+#define MLX90614CMD_UNLOCK_EMISS_CALIBRATION 0x60
+#define MLX90614_SLEEP_MODE 0xFF
+
+typedef enum
+{
+	MLX90614_OK 	= 0,
+	MLX90614_ERROR	= 1
+}MLX90614_STATUS;
+
+MLX90614_STATUS MLX90614_Init(I2C_HandleTypeDef *hi2c);
+MLX90614_STATUS MLX90614_SetAddress(uint8_t Address);
+MLX90614_STATUS MLX90614_GetId(uint32_t *Id);
+
+MLX90614_STATUS MLX90614_ReadObjectTemperature(float *Temperature);
+MLX90614_STATUS MLX90614_ReadAmbientTemperature(float *Temperature);
+//
+//	IR Emissivity Table - https://msalamon.pl/download/691/
+//
+MLX90614_STATUS MLX90614_GetEmissivity(float *Emissivity);
+MLX90614_STATUS MLX90614_SetEmissivity(float Emissivity);
+MLX90614_STATUS MLX90614_ResetEmissivity(float DefaultEmissivity);
 
 #endif /* MLX90614_H_ */
-
-// C Standard Libraries
-
-
-/* Private defines -----------------------------------------------------------*/
-#define I2C_Channel hi2c2
-
-/* DEFAULT SLAVE ADDRESS */
-#define MLX90614_DEFAULT_SA 0x5A
-/* OPCODE DEFINES */
-#define MLX90614_OP_RAM		0x00
-#define MLX90614_OP_EEPROM	0x20
-#define MLX90614_OP_SLEEP	0xFF
-
-/* RAM offsets with 16-bit data, MSB first */
-#define MLX90614_RAW1		(MLX90614_OP_RAM | 0x04) /* raw data IR channel 1 */
-#define MLX90614_RAW2		(MLX90614_OP_RAM | 0x05) /* raw data IR channel 2 */
-#define MLX90614_TAMB 		(MLX90614_OP_RAM | 0x06) /* ambient temperature */
-#define MLX90614_TOBJ1 		(MLX90614_OP_RAM | 0x07) /* object 1 temperature */
-#define MLX90614_TOBJ2 		(MLX90614_OP_RAM | 0x08) /* object 2 temperature */
-/* EEPROM offsets with 16-bit data, MSB first */
-#define MLX90614_TOMIN 		(MLX90614_OP_EEPROM | 0x00) /* object temperature min register */
-#define MLX90614_TOMAX 		(MLX90614_OP_EEPROM | 0x01) /* object temperature max register */
-#define MLX90614_PWMCTRL 	(MLX90614_OP_EEPROM | 0x02) /* pwm configuration register */
-#define MLX90614_TARANGE 	(MLX90614_OP_EEPROM | 0x03) /* ambient temperature register */
-#define MLX90614_EMISSIVITY (MLX90614_OP_EEPROM | 0x04) /* emissivity correction register */
-#define MLX90614_CFG1 		(MLX90614_OP_EEPROM | 0x05) /* configuration register */
-#define MLX90614_SA 		(MLX90614_OP_EEPROM | 0x0E) /* slave address register */
-#define MLX90614_ID1 		(MLX90614_OP_EEPROM | 0x1C) /*[read-only] 1 ID register */
-#define MLX90614_ID2 		(MLX90614_OP_EEPROM | 0x1D) /*[read-only] 2 ID register */
-#define MLX90614_ID3 		(MLX90614_OP_EEPROM | 0x1E) /*[read-only] 3 ID register */
-#define MLX90614_ID4 		(MLX90614_OP_EEPROM | 0x1F) /*[read-only] 4 ID register */
-
-#define MLX90614_DBG_OFF 0
-#define MLX90614_DBG_ON 1
-#define MLX90614_DBG_MSG_W 0
-#define MLX90614_DBG_MSG_R 1
-
-/* Exported functions prototypes ---------------------------------------------*/
-uint8_t CRC8_Calc(uint8_t*, const uint8_t);
-void MLX90614_WriteReg(uint8_t, uint8_t, uint16_t);
-uint16_t MLX90614_ReadReg(uint8_t, uint8_t, uint8_t);
-float MLX90614_ReadTemp(uint8_t, uint8_t);
-void MLX90614_ScanDevices (void);
-void MLX90614_SendDebugMsg(uint8_t, uint8_t, uint8_t, uint16_t, uint8_t, uint8_t);
-void MLX90614init(void);
