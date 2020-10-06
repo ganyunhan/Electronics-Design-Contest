@@ -56,3 +56,4 @@ servo-f407\main.o: ..\HARDWARE\VL53L0X\platform\vl53l1_error_codes.h
 servo-f407\main.o: ..\HARDWARE\VL53L0X\core\VL53l1X_calibration.h
 servo-f407\main.o: ..\HARDWARE\VL53L0X\core\X-NUCLEO-53L1A1.h
 servo-f407\main.o: ..\HARDWARE\Linefinder\linefinder.h
+servo-f407\main.o: ..\HARDWARE\BPSim\BPSim.h

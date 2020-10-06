@@ -22,30 +22,33 @@ Dialog DLL:      TCM.DLL V1.46.0.0
  
 <h2>Project:</h2>
 E:\STM32 software\HAL_Repo\Servo-F407\Electronics-Design-Contest\MDK-ARM\Servo-F407.uvprojx
-Project File Date:  10/05/2020
+Project File Date:  10/06/2020
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'D:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Servo-F407'
-compiling control.c...
-..\HARDWARE\control\control.c(14): warning:  #177-D: variable "adjust"  was declared but never referenced
-  	int adjust;
-..\HARDWARE\control\control.c: 1 warning, 0 errors
-compiling mlx90614.c...
-..\HARDWARE\MLX90614\mlx90614.c(129): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-  	Result = (float)Temperature * 0.02 - 273.15f;
-..\HARDWARE\MLX90614\mlx90614.c(189): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-  	*Emissivity = (float)tmp/65535.0;
-..\HARDWARE\MLX90614\mlx90614.c(196): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-  	if (Emissivity < 0.1 || Emissivity > 1)
-..\HARDWARE\MLX90614\mlx90614.c(207): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-  	new_emissivity = (uint16_t)round(65535.0 * Emissivity);
-..\HARDWARE\MLX90614\mlx90614.c: 4 warnings, 0 errors
+compiling BPSim.c...
+..\HARDWARE\BPSim\BPSim.h(30): warning:  #1295-D: Deprecated declaration simInit - give arg types
+  int simInit();
+..\HARDWARE\BPSim\BPSim.h(43): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\HARDWARE\BPSim\BPSim.c(120): warning:  #940-D: missing return statement at end of non-void function "sim" 
+  }
+..\HARDWARE\BPSim\BPSim.c(237): warning:  #1-D: last line of file ends without a newline
+  }
+..\HARDWARE\BPSim\BPSim.c(213): warning:  #177-D: variable "k"  was declared but never referenced
+  	int i = 0, j = 0, k = 0;
+..\HARDWARE\BPSim\BPSim.c: 5 warnings, 0 errors
 compiling main.c...
+..\HARDWARE\BPSim\BPSim.h(30): warning:  #1295-D: Deprecated declaration simInit - give arg types
+  int simInit();
+..\HARDWARE\BPSim\BPSim.h(43): warning:  #1-D: last line of file ends without a newline
+  #endif
+../Src/main.c: 2 warnings, 0 errors
 linking...
-Program Size: Code=18960 RO-data=604 RW-data=104 ZI-data=1824  
+Program Size: Code=21352 RO-data=696 RW-data=680 ZI-data=3376  
 FromELF: creating hex file...
-"Servo-F407\Servo-F407.axf" - 0 Error(s), 5 Warning(s).
+"Servo-F407\Servo-F407.axf" - 0 Error(s), 7 Warning(s).
 
 <h2>Software Packages used:</h2>
 

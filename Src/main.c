@@ -33,6 +33,7 @@
 #include "control.h"
 #include "VL53L1.h"
 #include "linefinder.h"
+#include "BPSim.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -53,6 +54,7 @@ char Uart_get[20];
 float deviationx,deviationy;
 uint16_t scanresult;
 extern uint16_t Distance;
+float BP_in[2],BP_out[1];
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -122,7 +124,6 @@ int main(void)
   MX_I2C1_Init();
   MX_TIM2_Init();
   MX_I2C2_Init();
-	
   MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
 	Motor_init();
@@ -131,17 +132,23 @@ int main(void)
 	HAL_UART_Receive_IT(&huart1,UART1RxBuffer,1);
 	vl53l1_init();
 	servo_init();
+	simInit();
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+		sim(BP_in, BP_out);
+		BP_in[0] = 28;
+		BP_in[1] = 150;
+		printf("%.2f",BP_out[0]);
+		
 //		Motor_set(20,0,0);
-		vl53_readis();
-		MLX90614_ReadAmbientTemperature(&AmbientTemperature);
-		MLX90614_ReadObjectTemperature(&ObjectTemperature);
-		printf("物体温度 %.2f	环境温度 %.2f 距离 %.dmm",ObjectTemperature,ObjectTemperature,Distance);
+//		vl53_readis();
+//		MLX90614_ReadAmbientTemperature(&AmbientTemperature);
+//		MLX90614_ReadObjectTemperature(&ObjectTemperature);
+//		printf("物体温度 %.2f	环境温度 %.2f 距离 %.dmm",ObjectTemperature,ObjectTemperature,Distance);
 //		servo_scan();
 //		ScanLine_ReadPins();
 //		Motor_Left_speed(20);

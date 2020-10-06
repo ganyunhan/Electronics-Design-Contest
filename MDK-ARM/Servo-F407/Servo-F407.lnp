@@ -38,6 +38,7 @@
 "servo-f407\vl53l1x_calibration.o"
 "servo-f407\x-nucleo-53l1a1.o"
 "servo-f407\vl53l1.o"
+"servo-f407\bpsim.o"
 --library_type=microlib --strict --scatter "Servo-F407\Servo-F407.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

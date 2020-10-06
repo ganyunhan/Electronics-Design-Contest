@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F407xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc;           ../Drivers/STM32F4xx_HAL_Driver/Inc;           ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;           ../Drivers/CMSIS/Device/ST/STM32F4xx/Include;           ../Drivers/CMSIS/Include;           ..\HARDWARE\motor;           ..\HARDWARE\MLX90614;           ..\HARDWARE\sys;           ..\HARDWARE\Linefinder;           ..\HARDWARE\control;           ..\HARDWARE\uart;           ..\HARDWARE\VL53L0X\core;           ..\HARDWARE\VL53L0X\platform</IncludePath>
+              <IncludePath>../Inc; ../Drivers/STM32F4xx_HAL_Driver/Inc; ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy; ../Drivers/CMSIS/Device/ST/STM32F4xx/Include; ../Drivers/CMSIS/Include; ..\HARDWARE\motor; ..\HARDWARE\MLX90614; ..\HARDWARE\sys; ..\HARDWARE\Linefinder; ..\HARDWARE\control; ..\HARDWARE\uart; ..\HARDWARE\VL53L0X\core; ..\HARDWARE\VL53L0X\platform; ..\HARDWARE\BPSim</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -607,6 +607,16 @@
               <FileName>VL53L1.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\VL53L0X\core\VL53L1.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>BPSim</GroupName>
+          <Files>
+            <File>
+              <FileName>BPSim.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\BPSim\BPSim.c</FilePath>
             </File>
           </Files>
         </Group>

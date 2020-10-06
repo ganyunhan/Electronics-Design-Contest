@@ -10,8 +10,8 @@ HeaderPath=..\Drivers\STM32F4xx_HAL_Driver\Inc;..\Drivers\STM32F4xx_HAL_Driver\I
 CDefines=USE_HAL_DRIVER;STM32F407xx;USE_HAL_DRIVER;USE_HAL_DRIVER;
 
 [PreviousGenFiles]
-HeaderPath=E:/STM32 software/HAL_Repo/Servo-F407/Inc
+HeaderPath=E:/STM32 software/HAL_Repo/Servo-F407/Electronics-Design-Contest/Inc
 HeaderFiles=gpio.h;i2c.h;tim.h;usart.h;stm32f4xx_it.h;stm32f4xx_hal_conf.h;main.h;
-SourcePath=E:/STM32 software/HAL_Repo/Servo-F407/Src
+SourcePath=E:/STM32 software/HAL_Repo/Servo-F407/Electronics-Design-Contest/Src
 SourceFiles=gpio.c;i2c.c;tim.c;usart.c;stm32f4xx_it.c;stm32f4xx_hal_msp.c;main.c;
 
