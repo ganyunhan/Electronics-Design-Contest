@@ -65,6 +65,12 @@ void Error_Handler(void);
 #define K1_GPIO_Port GPIOE
 #define K3_Pin GPIO_PIN_6
 #define K3_GPIO_Port GPIOE
+#define Encoder_L_Pin GPIO_PIN_0
+#define Encoder_L_GPIO_Port GPIOC
+#define Encoder_L_EXTI_IRQn EXTI0_IRQn
+#define Encoder_R_Pin GPIO_PIN_4
+#define Encoder_R_GPIO_Port GPIOC
+#define Encoder_R_EXTI_IRQn EXTI4_IRQn
 #define K4_Pin GPIO_PIN_7
 #define K4_GPIO_Port GPIOE
 /* USER CODE BEGIN Private defines */

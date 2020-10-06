@@ -13,7 +13,7 @@
 
 #ifndef MLX90614_H_
 #define MLX90614_H_
-
+#include "i2c.h"
 
 #define MLX90614_DEFAULT_ADDRESS ((0x5A)<<1)
 

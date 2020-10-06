@@ -4,6 +4,9 @@
 
 ******************************************************/
 #include "servo.h"
+#include "math.h"
+
+int x_pos,y_pos;		
 
 void servo_init(void)
 {
@@ -35,27 +38,34 @@ void servo_down_pos(int speed)	//下方电机位置(40~260)
 
 void servo_scan(void)					//舵机自动上下左右扫描
 {
-	static int i,j;
-	for(j = 160 ; j < 220 ;)
+	for(y_pos = 160 ; y_pos < 220 ;)
 	{
-		servo_up_pos(j);
-		if( (j/10)%2 == 0)
+		servo_up_pos(y_pos);
+		if( (y_pos/10)%2 == 0)
 		{
-			for(i = 40 ; i < 260 ; i++)
+			for(x_pos = 40 ; x_pos < 260 ; x_pos++)
 			{
-				servo_down_pos(i);
+				servo_down_pos(x_pos);
 				HAL_Delay(20);
 			}
 		}
 		else
 		{
-			for(i = 260 ; i > 40 ; i--)
+			for(x_pos = 260 ; x_pos > 40 ; x_pos--)
 			{
-				servo_down_pos(i);
+				servo_down_pos(x_pos);
 				HAL_Delay(20);
 			}
 		}
-		j += 10;
+		y_pos += 10;
 	}
+}
+
+void servo_adjust(int x_now,int y_now,float x_adj,float y_adj)
+{
+	if( fabs(x_adj)<1)	x_adj = 0;					//小数点抛弃
+	if( fabs(y_adj)<1)	y_adj = 0;
+	
+	servo_down_pos(170+x_adj);
 	
 }

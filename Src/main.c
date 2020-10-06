@@ -55,6 +55,8 @@ float deviationx,deviationy;
 uint16_t scanresult;
 extern uint16_t Distance;
 float BP_in[2],BP_out[1];
+uint16_t Encoder_L,Encoder_R;
+float encoder_value_l,encoder_value_r;
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -124,12 +126,13 @@ int main(void)
   MX_I2C1_Init();
   MX_TIM2_Init();
   MX_I2C2_Init();
-  MX_TIM3_Init();
+  MX_TIM5_Init();
   /* USER CODE BEGIN 2 */
 	Motor_init();
 	MLX90614_Init(&hi2c2);
   MLX90614_SetEmissivity(0.985); // Human skin
 	HAL_UART_Receive_IT(&huart1,UART1RxBuffer,1);
+	HAL_TIM_Base_Start_IT(&htim5);	//开启定时器5，定时0.1s，均值滤波
 	vl53l1_init();
 	servo_init();
 	simInit();
@@ -139,16 +142,16 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-		sim(BP_in, BP_out);
-		BP_in[0] = 28;
-		BP_in[1] = 150;
-		printf("%.2f",BP_out[0]);
-		
+//		sim(BP_in, BP_out);
+//		BP_in[0] = 28;
+//		BP_in[1] = 150;
+//		printf("%.2f",BP_out[0]);
 //		Motor_set(20,0,0);
-//		vl53_readis();
-//		MLX90614_ReadAmbientTemperature(&AmbientTemperature);
-//		MLX90614_ReadObjectTemperature(&ObjectTemperature);
-//		printf("物体温度 %.2f	环境温度 %.2f 距离 %.dmm",ObjectTemperature,ObjectTemperature,Distance);
+//		printf("左边电机转速：%.2f,右边电机转速：%.2f",encoder_value_l,encoder_value_r);
+		vl53_readis();
+		MLX90614_ReadAmbientTemperature(&AmbientTemperature);
+		MLX90614_ReadObjectTemperature(&ObjectTemperature);
+		printf("物体温度 %.2f	环境温度 %.2f 距离 %dmm",ObjectTemperature,AmbientTemperature,Distance);
 //		servo_scan();
 //		ScanLine_ReadPins();
 //		Motor_Left_speed(20);
@@ -215,6 +218,38 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 		Uart_Get();
 	}
 	HAL_UART_Receive_IT(&huart1,UART1RxBuffer,1);
+}
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)//外部中断，每检测到一次输入信号的上升沿，计数值frequency自增
+{
+	if(GPIO_Pin == Encoder_L_Pin)
+	{
+		Encoder_L++;
+	}
+	if(GPIO_Pin == Encoder_R_Pin)
+	{
+		Encoder_R++;
+	}
+}
+
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) //均值滤波算法，算脉冲更精准
+{
+	if(htim-> Instance == htim5.Instance) 
+	{
+		uint16_t pwm_sum_l,pwm_avg_l,pwm_avg_r,pwm_sum_r;
+		
+		pwm_sum_l += Encoder_L * 10;
+		pwm_sum_l -= pwm_avg_l;
+		pwm_avg_l = pwm_sum_l * 1.0 / 5;
+		encoder_value_l = pwm_avg_l / 52.0;
+		Encoder_L = 0;
+		
+		pwm_sum_r += Encoder_R * 10;
+		pwm_sum_r -= pwm_avg_r;
+		pwm_avg_r = pwm_sum_r * 1.0 / 5;
+		encoder_value_r = pwm_avg_r / 52.0;
+		Encoder_R = 0;
+	}
 }
 /* USER CODE END 4 */
 
