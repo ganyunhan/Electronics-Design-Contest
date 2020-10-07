@@ -5,8 +5,11 @@
 ******************************************************/
 #include "servo.h"
 #include "math.h"
+#include "control.h"
 
-int x_pos,y_pos;		
+extern int x_pos,y_pos;
+extern int scan_flag,servo_flag;
+extern float deviationx,deviationy;
 
 void servo_init(void)
 {
@@ -14,6 +17,10 @@ void servo_init(void)
 	HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_2);
 	servo_up_reset();
 	servo_down_reset();
+	if(scan_flag == 1)
+	{
+		servo_scan();
+	}
 }
 
 void servo_up_reset(void)		//上方电机归正
@@ -61,11 +68,11 @@ void servo_scan(void)					//舵机自动上下左右扫描
 	}
 }
 
-void servo_adjust(int x_now,int y_now,float x_adj,float y_adj)
+void servo_adjust(float x_adj,float y_adj)
 {
 	if( fabs(x_adj)<1)	x_adj = 0;					//小数点抛弃
 	if( fabs(y_adj)<1)	y_adj = 0;
 	
-	servo_down_pos(170+x_adj);
-	
+	servo_down_pos(x_pos+x_adj);
+	servo_up_pos(y_pos+y_adj);
 }

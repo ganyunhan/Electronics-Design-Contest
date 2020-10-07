@@ -47,7 +47,7 @@ uint8_t len;
 uint16_t times=0; 
 float ObjectTemperature;
 float AmbientTemperature;
-int speed_set = 20, recive_flag = 0;
+int speed_set = 20,recive_flag = 0,scan_flag = 0,servo_flag = 0;
 char deviationx_rec[5],deviationy_rec[5];
 uint8_t	UART1RxBuffer[1];
 char Uart_get[20];
@@ -57,6 +57,7 @@ extern uint16_t Distance;
 float BP_in[2],BP_out[1];
 uint16_t Encoder_L,Encoder_R;
 float encoder_value_l,encoder_value_r;
+int x_pos,y_pos;
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -216,6 +217,10 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 	if(huart->Instance == USART1)			//串口1接收中断处理
 	{
 		Uart_Get();
+		if(servo_flag == 1)
+		{
+			servo_adjust( Position_PID_X(deviationx,0) , Position_PID_Y(deviationy,0));
+		}
 	}
 	HAL_UART_Receive_IT(&huart1,UART1RxBuffer,1);
 }

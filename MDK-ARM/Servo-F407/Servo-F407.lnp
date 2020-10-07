@@ -1,4 +1,4 @@
---cpu=Cortex-M4.fp.sp
+--cpu=Cortex-M4.fp
 "servo-f407\startup_stm32f407xx.o"
 "servo-f407\main.o"
 "servo-f407\gpio.o"

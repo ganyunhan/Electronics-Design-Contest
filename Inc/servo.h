@@ -10,5 +10,6 @@ void servo_down_reset(void);
 void servo_up_speed(int speed);
 void servo_down_speed(int speed);
 void servo_scan(void);
+void servo_adjust(float x_adj,float y_adj);
 
 #endif

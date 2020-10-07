@@ -5,7 +5,7 @@ void Uart_Get(void)
 	static unsigned char ucRxCnt = 0, i = 0;
 	extern char deviationx_rec[5],deviationx_rec[5];
 	extern uint8_t	UART1RxBuffer[1];
-	extern int recive_flag;
+	extern int recive_flag,scan_flag,servo_flag;
 	extern char Uart_get[20];
 	Uart_get[ucRxCnt++] = UART1RxBuffer[0];
 	if(Uart_get[0] == 'W')										//头校验位W
@@ -43,6 +43,12 @@ void Uart_Get(void)
 				{
 						deviationx_rec[i-1] = Uart_get[i];
 				}break;
+				
+				case 'S':														//帧头S:开启舵机扫描
+					scan_flag = 1;break;
+				
+				case 'F':														//帧头F:停止舵机扫描，开始PID调整舵机
+					scan_flag = 1;break;
 			}
 			Uart_DataProcess();
 			ucRxCnt = 0;

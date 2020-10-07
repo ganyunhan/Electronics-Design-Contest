@@ -116,7 +116,6 @@ int sim(float x[SIMROW_X], float y[SIMROW_Y])
 			}
 		}
 	}
-
 }
 
 //mode1==0,¼¤Àøº¯Êý£¨sig£©
@@ -210,7 +209,7 @@ double simDataRecover(double y, int j,int mode1)
 
 int simFree(void)
 {
-	int i = 0, j = 0, k = 0;
+	int i = 0, j = 0;
 	//ÊÍ·Ådata
 	free(data);
 	*data = NULL;

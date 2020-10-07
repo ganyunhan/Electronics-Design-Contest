@@ -4,14 +4,14 @@
 extern void Turn_Right(void);
 extern void Turn_Left(void);
 
-float Position_KP=0.5,Position_KI=0,Position_KD=0;  //滑台控制PID参数
-float Position_Kp=-1.5,Position_Ki=-0.18,Position_Kd=0;  //喷气量控制PID参数
+float Position_KP=0.5,Position_KI=0,Position_KD=0;  			//X控制PID参数
+float Position_Kp=-1.5,Position_Ki=-0.18,Position_Kd=0;  	//Y控制PID参数
 
 void Control_Loop(void)                   
 {
 	extern int  speed_set , recive_flag ;
 	extern float deviationx;
-	int adjust;
+//	int adjust;
 	Track();
 //	Motor_set(speed_set , 30 , 0);
 //	recive_flag = 0;

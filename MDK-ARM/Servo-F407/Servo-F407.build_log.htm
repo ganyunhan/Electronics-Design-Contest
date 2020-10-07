@@ -3,48 +3,68 @@
 <pre>
 <h1>礦ision Build Log</h1>
 <h2>Tool Versions:</h2>
-IDE-Version: μVision V5.31.0.0
-Copyright (C) 2020 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: Yunhan Gan, 三角洲电子科技, LIC=585FJ-UHZZ2-12TLE-5NA34-W9ZM1-5SGPI
+IDE-Version: μVision V5.26.2.0
+Copyright (C) 2018 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: L Windows, Microsoft, LIC=76F5U-SA7JK-ARJXW-Q0NA7-NH0E4-Q28SI
  
 Tool Versions:
-Toolchain:       MDK-ARM Plus  Version: 5.31.0.0
-Toolchain Path:  D:\Keil_v5\ARM\ARMCC\Bin
-C Compiler:      Armcc.exe V5.06 update 6 (build 750)
-Assembler:       Armasm.exe V5.06 update 6 (build 750)
-Linker/Locator:  ArmLink.exe V5.06 update 6 (build 750)
-Library Manager: ArmAr.exe V5.06 update 6 (build 750)
-Hex Converter:   FromElf.exe V5.06 update 6 (build 750)
-CPU DLL:         SARMCM3.DLL V5.31.0.0
-Dialog DLL:      DCM.DLL V1.17.3.0
-Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.7.0
-Dialog DLL:      TCM.DLL V1.46.0.0
+Toolchain:       MDK-ARM Plus  Version: 5.18
+Toolchain Path:  F:\Program Files (x86)\Keil5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 1 (build 61)
+Assembler:       Armasm.exe V5.06 update 1 (build 61)
+Linker/Locator:  ArmLink.exe V5.06 update 1 (build 61)
+Library Manager: ArmAr.exe V5.06 update 1 (build 61)
+Hex Converter:   FromElf.exe V5.06 update 1 (build 61)
+CPU DLL:         SARMCM3.DLL V5.18
+Dialog DLL:      DCM.DLL V1.13.6.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V2.0.18.0
+Dialog DLL:      TCM.DLL V1.14.8.0
  
 <h2>Project:</h2>
 E:\STM32 software\HAL_Repo\Servo-F407\Electronics-Design-Contest\MDK-ARM\Servo-F407.uvprojx
-Project File Date:  10/06/2020
+Project File Date:  10/07/2020
 
 <h2>Output:</h2>
-*** Using Compiler 'V5.06 update 6 (build 750)', folder: 'D:\Keil_v5\ARM\ARMCC\Bin'
+*** Using Compiler 'V5.06 update 1 (build 61)', folder: 'F:\Program Files (x86)\Keil5\ARM\ARMCC\Bin'
 Build target 'Servo-F407'
+compiling stm32f4xx_hal_msp.c...
+compiling stm32f4xx_it.c...
+compiling tim.c...
 compiling main.c...
 ..\HARDWARE\BPSim\BPSim.h(30): warning:  #1295-D: Deprecated declaration simInit - give arg types
   int simInit();
-..\HARDWARE\BPSim\BPSim.h(43): warning:  #1-D: last line of file ends without a newline
-  #endif
-../Src/main.c: 2 warnings, 0 errors
+../Src/main.c: 1 warning, 0 errors
+compiling usart.c...
+compiling i2c.c...
+compiling gpio.c...
+compiling control.c...
+compiling mlx90614.c...
+..\HARDWARE\MLX90614\mlx90614.c(129): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	Result = (float)Temperature * 0.02 - 273.15f;
+..\HARDWARE\MLX90614\mlx90614.c(189): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	*Emissivity = (float)tmp/65535.0;
+..\HARDWARE\MLX90614\mlx90614.c(196): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	if (Emissivity < 0.1 || Emissivity > 1)
+..\HARDWARE\MLX90614\mlx90614.c(207): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	new_emissivity = (uint16_t)round(65535.0 * Emissivity);
+..\HARDWARE\MLX90614\mlx90614.c: 4 warnings, 0 errors
+compiling servo.c...
+compiling uart_handler.c...
+compiling linefinder.c...
+compiling motor.c...
+compiling VL53L1.c...
 linking...
-Program Size: Code=20228 RO-data=604 RW-data=688 ZI-data=3376  
+Program Size: Code=20628 RO-data=604 RW-data=760 ZI-data=3376  
 FromELF: creating hex file...
-"Servo-F407\Servo-F407.axf" - 0 Error(s), 2 Warning(s).
+"Servo-F407\Servo-F407.axf" - 0 Error(s), 5 Warning(s).
 
 <h2>Software Packages used:</h2>
 
 Package Vendor: ARM
-                http://www.keil.com/pack/ARM.CMSIS.5.7.0.pack
-                ARM.CMSIS.5.7.0
+                http://www.keil.com/pack/ARM.CMSIS.4.5.0.pack
+                ARM.CMSIS.4.5.0
                 CMSIS (Cortex Microcontroller Software Interface Standard)
-   * Component: CORE Version: 5.4.0
+   * Component: CORE Version: 4.3.0
 
 Package Vendor: Keil
                 http://www.keil.com/pack/Keil.STM32F4xx_DFP.2.13.0.pack
@@ -53,13 +73,13 @@ Package Vendor: Keil
 
 <h2>Collection of Component include folders:</h2>
   .\RTE\_Servo-F407
-  D:\Keil_v5\ARM\PACK\ARM\CMSIS\5.7.0\CMSIS\Core\Include
-  D:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
+  F:\Program Files (x86)\Keil5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include
+  F:\Program Files (x86)\Keil5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
 
 <h2>Collection of Component Files used:</h2>
 
-   * Component: ARM::CMSIS:CORE:5.4.0
-Build Time Elapsed:  00:00:02
+   * Component: ARM::CMSIS:CORE:4.3.0
+Build Time Elapsed:  00:00:24
 </pre>
 </body>
 </html>
