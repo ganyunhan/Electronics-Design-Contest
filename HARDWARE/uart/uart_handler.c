@@ -1,6 +1,10 @@
 #include "uart_handler.h"
 #include "string.h"
 
+struct SAcc 		stcAcc;
+struct SGyro 		stcGyro;
+struct SAngle 	stcAngle;
+
 void Uart_Get(void)
 {
 	static unsigned char ucRxCnt = 0, i = 0;
