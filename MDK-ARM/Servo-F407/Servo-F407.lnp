@@ -1,4 +1,4 @@
---cpu=Cortex-M4.fp
+--cpu=Cortex-M4.fp.sp
 "servo-f407\startup_stm32f407xx.o"
 "servo-f407\main.o"
 "servo-f407\gpio.o"
@@ -33,11 +33,6 @@
 "servo-f407\linefinder.o"
 "servo-f407\control.o"
 "servo-f407\uart_handler.o"
-"servo-f407\vl53l1_platform.o"
-"servo-f407\vl53l1x_api.o"
-"servo-f407\vl53l1x_calibration.o"
-"servo-f407\x-nucleo-53l1a1.o"
-"servo-f407\vl53l1.o"
 "servo-f407\bpsim.o"
 --library_type=microlib --strict --scatter "Servo-F407\Servo-F407.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols

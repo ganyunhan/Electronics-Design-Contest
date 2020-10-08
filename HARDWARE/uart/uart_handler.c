@@ -1,4 +1,5 @@
 #include "uart_handler.h"
+#include "string.h"
 
 void Uart_Get(void)
 {
@@ -8,6 +9,7 @@ void Uart_Get(void)
 	extern int recive_flag,scan_flag,servo_flag;
 	extern char Uart_get[20];
 	Uart_get[ucRxCnt++] = UART1RxBuffer[0];
+	
 	if(Uart_get[0] == 'W')										//头校验位W
 	{
 		
@@ -55,6 +57,36 @@ void Uart_Get(void)
 		}
 	}
 	else ucRxCnt = 0;
+}
+
+
+
+void Get_Value(unsigned char* ucFlag)//获取VL53L0数据
+{
+	extern unsigned char ucRxData[100];
+	char dis_rec[4];
+	unsigned char *p;
+	extern uint16_t Distance;
+	int i=0;
+	
+		if(*ucFlag==1)
+		{
+			p=(unsigned char*)strstr((char*)ucRxData,"d:");
+			
+			while(*p!='m')
+			{
+				if(*p>='0'&&*p<='9')
+				{
+					
+					dis_rec[i] = *p;
+					i++;
+				}
+				p++;
+			}
+			Distance = atoi(dis_rec);
+			i = 0;
+			*ucFlag=0;
+	 }
 }
 
 void Uart_DataProcess(void)

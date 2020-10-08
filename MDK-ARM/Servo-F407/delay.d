@@ -4,7 +4,7 @@ servo-f407\delay.o: ..\HARDWARE\sys\sys.h
 servo-f407\delay.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
 servo-f407\delay.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h
 servo-f407\delay.o: ../Drivers/CMSIS/Include/core_cm4.h
-servo-f407\delay.o: F:\Program Files (x86)\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
+servo-f407\delay.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 servo-f407\delay.o: ../Drivers/CMSIS/Include/cmsis_version.h
 servo-f407\delay.o: ../Drivers/CMSIS/Include/cmsis_compiler.h
 servo-f407\delay.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
@@ -16,7 +16,7 @@ servo-f407\delay.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h
 servo-f407\delay.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h
 servo-f407\delay.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
 servo-f407\delay.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
-servo-f407\delay.o: F:\Program Files (x86)\Keil5\ARM\ARMCC\Bin\..\include\stddef.h
+servo-f407\delay.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 servo-f407\delay.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h
 servo-f407\delay.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h
 servo-f407\delay.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h

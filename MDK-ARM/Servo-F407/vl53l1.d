@@ -9,7 +9,7 @@ servo-f407\vl53l1.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h
 servo-f407\vl53l1.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
 servo-f407\vl53l1.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h
 servo-f407\vl53l1.o: ../Drivers/CMSIS/Include/core_cm4.h
-servo-f407\vl53l1.o: F:\Program Files (x86)\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
+servo-f407\vl53l1.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 servo-f407\vl53l1.o: ../Drivers/CMSIS/Include/cmsis_version.h
 servo-f407\vl53l1.o: ../Drivers/CMSIS/Include/cmsis_compiler.h
 servo-f407\vl53l1.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
@@ -17,7 +17,7 @@ servo-f407\vl53l1.o: ../Drivers/CMSIS/Include/mpu_armv7.h
 servo-f407\vl53l1.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h
 servo-f407\vl53l1.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 servo-f407\vl53l1.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
-servo-f407\vl53l1.o: F:\Program Files (x86)\Keil5\ARM\ARMCC\Bin\..\include\stddef.h
+servo-f407\vl53l1.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 servo-f407\vl53l1.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h
 servo-f407\vl53l1.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h
 servo-f407\vl53l1.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h
@@ -37,9 +37,9 @@ servo-f407\vl53l1.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 servo-f407\vl53l1.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 servo-f407\vl53l1.o: ..\HARDWARE\VL53L0X\platform\vl53l1_platform_log.h
 servo-f407\vl53l1.o: ..\HARDWARE\VL53L0X\platform\vl53l1_types.h
-servo-f407\vl53l1.o: F:\Program Files (x86)\Keil5\ARM\ARMCC\Bin\..\include\string.h
-servo-f407\vl53l1.o: F:\Program Files (x86)\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
-servo-f407\vl53l1.o: F:\Program Files (x86)\Keil5\ARM\ARMCC\Bin\..\include\stdlib.h
+servo-f407\vl53l1.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+servo-f407\vl53l1.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+servo-f407\vl53l1.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 servo-f407\vl53l1.o: ..\HARDWARE\VL53L0X\platform\vl53l1_error_codes.h
 servo-f407\vl53l1.o: ..\HARDWARE\VL53L0X\core\VL53l1X_calibration.h
 servo-f407\vl53l1.o: ..\HARDWARE\VL53L0X\core\X-NUCLEO-53L1A1.h
