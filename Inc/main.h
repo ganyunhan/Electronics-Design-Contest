@@ -68,9 +68,12 @@ void Error_Handler(void);
 #define Encoder_L_Pin GPIO_PIN_0
 #define Encoder_L_GPIO_Port GPIOC
 #define Encoder_L_EXTI_IRQn EXTI0_IRQn
-#define Encoder_R_Pin GPIO_PIN_4
+#define Encoder_R_Pin GPIO_PIN_1
 #define Encoder_R_GPIO_Port GPIOC
-#define Encoder_R_EXTI_IRQn EXTI4_IRQn
+#define Encoder_R_EXTI_IRQn EXTI1_IRQn
+#define OpenMV_Pin GPIO_PIN_2
+#define OpenMV_GPIO_Port GPIOC
+#define OpenMV_EXTI_IRQn EXTI2_IRQn
 #define K4_Pin GPIO_PIN_7
 #define K4_GPIO_Port GPIOE
 /* USER CODE BEGIN Private defines */

@@ -22,7 +22,7 @@ struct SAngle
 	short T;
 };
 
-void Uart_Get(void);
+void Uart_Get(uint8_t	RxBuffer[]);
 void Uart_DataProcess(void);
 void Get_Value(unsigned char* ucFlag);//获取VL53L0数据
 void angle_rec(unsigned char ucData);

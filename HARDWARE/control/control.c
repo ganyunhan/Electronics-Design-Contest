@@ -4,15 +4,15 @@
 extern void Turn_Right(void);
 extern void Turn_Left(void);
 
-float Position_KP=0.5,Position_KI=0,Position_KD=0;  			//X控制PID参数
-float Position_Kp=-1.5,Position_Ki=-0.18,Position_Kd=0;  	//Y控制PID参数
+float Position_KP=2,Position_KI=0,Position_KD=0;  			//X控制PID参数
+float Position_Kp=2,Position_Ki=-0,Position_Kd=0;  	//Y控制PID参数
 
 void Control_Loop(void)                   
 {
 	extern int  speed_set , recive_flag ;
 	extern float deviationx;
 //	int adjust;
-	Track();
+	servo_scan();
 //	Motor_set(speed_set , 30 , 0);
 //	recive_flag = 0;
 //	adjust = Position_PID_X (deviationx, 0);

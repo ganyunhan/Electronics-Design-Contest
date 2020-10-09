@@ -45,10 +45,10 @@
 uint8_t len;	
 uint16_t times=0; 
 float ObjectTemperature;
-float AmbientTemperature;
-int speed_set = 20,recive_flag = 0,scan_flag = 0,servo_flag = 0;
+float AmbientTemperature,servo_x = 170,servo_y = 200;
+int speed_set = 20,recive_flag = 0,scan_flag = 0;
 char deviationx_rec[5],deviationy_rec[5];
-uint8_t	UART1RxBuffer[1],UART2RxBuffer[1];
+uint8_t	UART1RxBuffer[1],UART2RxBuffer[1],UART3RxBuffer[1];
 char Uart_get[20];
 float deviationx,deviationy;
 uint16_t scanresult;
@@ -56,10 +56,11 @@ uint16_t Distance;
 float BP_in[2],BP_out[1];
 uint16_t Encoder_L,Encoder_R;
 float encoder_value_l,encoder_value_r;
-int x_pos,y_pos;
+int x_pos = 170,y_pos = 200;
 unsigned char ucRxData[100];
 unsigned char ucRxFinish=0;
 static unsigned char ucCnt=0;
+float Pitch,Roll,Yaw;
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -131,12 +132,14 @@ int main(void)
   MX_I2C2_Init();
   MX_TIM5_Init();
   MX_USART2_UART_Init();
+  MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
 	Motor_init();
 	MLX90614_Init(&hi2c2);
   MLX90614_SetEmissivity(0.985); // Human skin
 	HAL_UART_Receive_IT(&huart1,UART1RxBuffer,1);
 	HAL_UART_Receive_IT(&huart2,UART2RxBuffer,1);
+	HAL_UART_Receive_IT(&huart3,UART3RxBuffer,1);
 	HAL_TIM_Base_Start_IT(&htim5);	//开启定时器5，定时0.1s，均值滤波
 	servo_init();
 	simInit();
@@ -149,20 +152,22 @@ int main(void)
 	
 //		Motor_set(20,0,0);
 //		printf("左边电机转速：%.2f,右边电机转速：%.2f",encoder_value_l,encoder_value_r);
-		MLX90614_ReadAmbientTemperature(&AmbientTemperature);
-		MLX90614_ReadObjectTemperature(&ObjectTemperature);
+//		MLX90614_ReadAmbientTemperature(&AmbientTemperature);
+//		MLX90614_ReadObjectTemperature(&ObjectTemperature);
 //		servo_scan();
 //		ScanLine_ReadPins();
 //		Motor_Left_speed(20);
 //		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1,200); 
 //		debug_log("Now mode is %d",scanresult);
 //		Control_Loop();
-		Get_Value(&ucRxFinish);
-			BP_in[0] = ObjectTemperature;
-		BP_in[1] = Distance;
-		sim(BP_in, BP_out);
-		printf("物体温度%.2f距离 %dmm",BP_out[0],Distance);
-		HAL_Delay(300);
+//		Get_Value(&ucRxFinish);
+//		BP_in[0] = ObjectTemperature;
+//		BP_in[1] = Distance;
+//		sim(BP_in, BP_out);
+//		printf("物体温度%.2f距离 %dmm",BP_out[0],Distance);
+		servo_adjust(deviationx,deviationy);
+//		printf("x:%.2f  y:%.2f\n",deviationx,deviationy);
+		HAL_Delay(20);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -218,13 +223,12 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
 	unsigned char temp=0;
 	extern unsigned char UART1RxBuffer[1];
+	
+	__HAL_UART_CLEAR_PEFLAG(huart);
+	
 	if(huart->Instance == USART1)			//串口1接收中断处理
 	{
-		Uart_Get();
-		if(servo_flag == 1)
-		{
-			servo_adjust( Position_PID_X(deviationx,0) , Position_PID_Y(deviationy,0));
-		}
+	
 	}
 	if(huart->Instance == USART2)			//串口2接收中断处理
 	{
@@ -236,8 +240,14 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 			  ucCnt=0;
 			}
 	}
+	if(huart->Instance == USART3)			//串口3接收中断处理
+	{
+		Uart_Get(UART3RxBuffer);
+//		debug_log("%s",UART3RxBuffer);
+	}
 	HAL_UART_Receive_IT(&huart1,UART1RxBuffer,1);
 	HAL_UART_Receive_IT(&huart2,UART2RxBuffer,1);
+	HAL_UART_Receive_IT(&huart3,UART3RxBuffer,1);
 }
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)//外部中断，每检测到一次输入信号的上升沿，计数值frequency自增
@@ -249,6 +259,11 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)//外部中断，每检测到一次输入信号的
 	if(GPIO_Pin == Encoder_R_Pin)
 	{
 		Encoder_R++;
+	}
+	if(GPIO_Pin == OpenMV_Pin)
+	{
+//		printf("ok");
+//		servo_adjust(deviationx,deviationy);
 	}
 }
 
